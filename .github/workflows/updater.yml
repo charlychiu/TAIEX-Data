@@ -1,12 +1,8 @@
-# on:
-#   schedule:
-#     - cron:  '*/5 * * * *'
 name: stock TAIEX updater
 
 on:
-  push:
-    branches:
-    - main
+  schedule:
+  - cron: "0 */8 * * *"
   
 jobs:
   build:
