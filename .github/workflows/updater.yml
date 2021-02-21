@@ -23,6 +23,7 @@ jobs:
     - name: Create local changes
       run: |
         python update.py
+        python k-indicator.py
     - name: Commit & Push changes
       uses: actions-js/push@master
       with:
