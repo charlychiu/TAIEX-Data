@@ -14,6 +14,10 @@ if not os.path.exists('history/' + str(y)):
 r = requests.get(
     'https://www.twse.com.tw/indicesReport/MI_5MINS_HIST?response=json&date=' + filename, headers=my_headers)
 
-with open('history/' + str(y) + '/' + filename + '.json', 'w') as outfile:
-    json.dump(r.json(), outfile)
-print(filename)
+if 'data' not in r.json():
+    print('No contain data')
+else:
+    print('Got data count: ' + str(len(r.json()['data'])))
+    print('Save file: ' + 'history/' + str(y) + '/' + filename + '.json')
+    with open('history/' + str(y) + '/' + filename + '.json', 'w') as outfile:
+        json.dump(r.json(), outfile)
